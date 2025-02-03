@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dessert Selection</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Center container */
+        .container {
+            text-align: center;
+        }
+
+        /* Dessert options grid styling */
+        .dessert-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            margin-top: 20px;
+        }
+
+        /* Individual dessert item styling */
+        .dessert-item {
+            text-align: center;
+            width: 150px;
+        }
+
+        .dessert-item img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .dessert-item label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+        .cta-button {
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #ff69b4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #ff85c9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pick a Dessert 🍨</h1>
+        <p>Select your favorite dessert:</p>
+        <form action="activities_selection.html" method="GET">
+            <input type="hidden" name="date" value="{{ date }}">
+            <input type="hidden" name="food" value="{{ food }}">
+            <div class="dessert-options">
+                <!-- Original Options -->
+                <div class="dessert-item">
+                    <label>
+                        <img src="images/cheesecake.jpg" alt="Cheesecake">
+                        <input type="checkbox" name="dessert" value="Cheesecake"> Cheesecake
+                    </label>
+                </div>
+                <div class="dessert-item">
+                    <label>
+                        <img src="images/cumballz.jpg" alt="Cumballz">
+                        <input type="checkbox" name="dessert" value="Cumballz"> Cumballz
+                    </label>
+                </div>
+                <div class="dessert-item">
+                    <label>
+                        <img src="images/mint_chip.jpg" alt="Mint n Chip">
+                        <input type="checkbox" name="dessert" value="Mint n Chip"> Mint n Chip
+                    </label>
+                </div>
+                <div class="dessert-item">
+                    <label>
+                        <img src="images/lindor_chocolate.jpg" alt="Lindor Chocolate">
+                        <input type="checkbox" name="dessert" value="Lindor Chocolate"> Lindor Chocolate
+                    </label>
+                </div>
+                <div class="dessert-item">
+                    <label>
+                        <img src="images/cherry_moose_tracks.jpg" alt="Cherry Moose Tracks">
+                        <input type="checkbox" name="dessert" value="Cherry Moose Tracks"> Cherry Moose Tracks
+                    </label>
+                </div>
+                <!-- New Options -->
+                <div class="dessert-item">
+                    <label>
+                        <img src="images/baskin_robbins.jpg" alt="Baskin Robbins">
+                        <input type="checkbox" name="dessert" value="Baskin Robbins"> Baskin Robbins
+                    </label>
+                </div>
+                <div class="dessert-item">
+                    <label>
+                        <img src="images/choco_cookie_icecream.jpg" alt="Choco Cookie Ice Cream">
+                        <input type="checkbox" name="dessert" value="Choco Cookie Ice Cream"> Choco Cookie Ice Cream
+                    </label>
+                </div>
+                <div class="dessert-item">
+                    <label>
+                        <img src="images/cold_stone.jpg" alt="Cold Stone">
+                        <input type="checkbox" name="dessert" value="Cold Stone"> Cold Stone
+                    </label>
+                </div>
+                <div class="dessert-item">
+                    <label>
+                        <img src="images/heath_bars.jpg" alt="Heath Bars">
+                        <input type="checkbox" name="dessert" value="Heath Bars"> Heath Bars
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="cta-button">Next</button>
+        </form>
+    </div>
+</body>
+</html>

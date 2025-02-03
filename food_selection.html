@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Selection</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Center container */
+        .container {
+            text-align: center;
+        }
+
+        /* Food options grid styling */
+        .food-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            margin-top: 20px;
+        }
+
+        /* Individual food item styling */
+        .food-item {
+            text-align: center;
+            width: 150px;
+        }
+
+        .food-item img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .food-item label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+        .cta-button {
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #ff69b4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #ff85c9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>What food would you like to eat?</h1>
+        <p>Select your favorite place or meal:</p>
+        <form action="dessert_selection.html" method="GET">
+            <input type="hidden" name="date" value="{{ date }}">
+            <div class="food-options">
+                <!-- Ramen -->
+                <div class="food-item">
+                    <label>
+                        <img src="images/ramen.jpg" alt="Ramen">
+                        <input type="checkbox" name="food" value="Ramen"> Ramen
+                    </label>
+                </div>
+                <!-- Mongolian BBQ -->
+                <div class="food-item">
+                    <label>
+                        <img src="images/mongolian_bbq.jpg" alt="Mongolian BBQ">
+                        <input type="checkbox" name="food" value="Mongolian BBQ"> Mongolian BBQ
+                    </label>
+                </div>
+                <!-- In-N-Out -->
+                <div class="food-item">
+                    <label>
+                        <img src="images/in_n_out.jpg" alt="In-N-Out">
+                        <input type="checkbox" name="food" value="In-N-Out"> In-N-Out
+                    </label>
+                </div>
+                <!-- Cheesecake Factory -->
+                <div class="food-item">
+                    <label>
+                        <img src="images/cheesecake_factory.jpg" alt="Cheesecake Factory">
+                        <input type="checkbox" name="food" value="Cheesecake Factory"> Cheesecake Factory
+                    </label>
+                </div>
+                <!-- Pizza Factory -->
+                <div class="food-item">
+                    <label>
+                        <img src="images/pizza_factory.jpg" alt="Pizza Factory">
+                        <input type="checkbox" name="food" value="Pizza Factory"> Pizza Factory
+                    </label>
+                </div>
+                <!-- Olive Garden -->
+                <div class="food-item">
+                    <label>
+                        <img src="images/olive_garden.jpg" alt="Olive Garden">
+                        <input type="checkbox" name="food" value="Olive Garden"> Olive Garden
+                    </label>
+                </div>
+                <!-- Chili's -->
+                <div class="food-item">
+                    <label>
+                        <img src="images/chilis.jpg" alt="Chili's">
+                        <input type="checkbox" name="food" value="Chili's"> Chili's
+                    </label>
+                </div>
+                <!-- Chicken and Mashed Potatoes -->
+                <div class="food-item">
+                    <label>
+                        <img src="images/chicken_mash_potatoes.jpg" alt="Chicken and Mashed Potatoes">
+                        <input type="checkbox" name="food" value="Chicken and Mashed Potatoes"> Chicken and Mashed Potatoes
+                    </label>
+                </div>
+                <!-- Homemade Pasta -->
+                <div class="food-item">
+                    <label>
+                        <img src="images/homemade_pasta.jpg" alt="Homemade Pasta">
+                        <input type="checkbox" name="food" value="Homemade Pasta"> Homemade Pasta
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="cta-button">Next</button>
+        </form>
+    </div>
+</body>
+</html>

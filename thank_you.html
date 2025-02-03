@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .thank-you {
+            font-size: 2rem;
+            color: #ff69b4;
+        }
+        .cta-button {
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #ff69b4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #ff85c9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="thank-you">Thank You for Being My Valentine! 💖</h1>
+        <p>Your responses have been submitted and saved! 😊</p>
+        <p>I appreciate you so much! 💐</p>
+        <form action="https://formspree.io/f/xqakovlq" method="POST" id="thank-you-form">
+            <input type="hidden" name="date" id="hidden-date">
+            <input type="hidden" name="food" id="hidden-food">
+            <input type="hidden" name="dessert" id="hidden-dessert">
+            <input type="hidden" name="activity" id="hidden-activity">
+            <button type="submit" class="cta-button">Send Email</button>
+        </form>
+    </div>
+
+    <script>
+        // Retrieve data from URL parameters
+        const params = new URLSearchParams(window.location.search);
+
+        // Populate hidden fields with actual data
+        document.getElementById('hidden-date').value = params.get('date') || 'Not provided';
+        document.getElementById('hidden-food').value = params.get('food') || 'Not provided';
+        document.getElementById('hidden-dessert').value = params.get('dessert') || 'Not provided';
+        document.getElementById('hidden-activity').value = params.get('activity') || 'Not provided';
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activities Selection</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Center container */
+        .container {
+            text-align: center;
+        }
+
+        /* Activities grid styling */
+        .activity-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            margin-top: 20px;
+        }
+
+        /* Individual activity item styling */
+        .activity-item {
+            text-align: center;
+            width: 150px;
+        }
+
+        .activity-item img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .activity-item label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+        .cta-button {
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #ff69b4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pick an Activity 🎨</h1>
+        <p>Select what you’d like to do:</p>
+        <form action="thank_you.html" method="GET">
+            <input type="hidden" name="date" value="{{ date }}">
+            <input type="hidden" name="food" value="{{ food }}">
+            <input type="hidden" name="dessert" value="{{ dessert }}">
+            <div class="activity-options">
+                <!-- Build Legos -->
+                <div class="activity-item">
+                    <label>
+                        <img src="images/build_legos.jpg" alt="Build Legos">
+                        <input type="checkbox" name="activity" value="Build Legos"> Build Legos
+                    </label>
+                </div>
+                <!-- Ceramics -->
+                <div class="activity-item">
+                    <label>
+                        <img src="images/ceramics.jpg" alt="Ceramics">
+                        <input type="checkbox" name="activity" value="Ceramics"> Ceramics
+                    </label>
+                </div>
+                <!-- Movies in Theater -->
+                <div class="activity-item">
+                    <label>
+                        <img src="images/movies_theater.jpg" alt="Movies in Theater">
+                        <input type="checkbox" name="activity" value="Movies in Theater"> Movies in Theater
+                    </label>
+                </div>
+                <!-- Netflix & Cuddles -->
+                <div class="activity-item">
+                    <label>
+                        <img src="images/netflix_cuddles.jpg" alt="Netflix & Cuddles">
+                        <input type="checkbox" name="activity" value="Netflix & Cuddles"> Netflix & Cuddles
+                    </label>
+                </div>
+                <!-- Art Night -->
+                <div class="activity-item">
+                    <label>
+                        <img src="images/art_night.jpg" alt="Art Night">
+                        <input type="checkbox" name="activity" value="Art Night"> Art Night
+                    </label>
+                </div>
+                <!-- Shopping Haul -->
+                <div class="activity-item">
+                    <label>
+                        <img src="images/shopping_haul.jpg" alt="Shopping Haul">
+                        <input type="checkbox" name="activity" value="Shopping Haul"> Shopping Haul
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="cta-button">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
