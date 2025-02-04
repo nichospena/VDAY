@@ -137,33 +137,36 @@
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Check if audio is already playing
+            let audio;
+    
+            // Check if audio is already playing in another page session
             if (!window.audioPlayer) {
-                window.audioPlayer = new Audio("music.mp3"); // Replace with your actual file
+                window.audioPlayer = new Audio("music.mp3");
                 window.audioPlayer.loop = true;
                 window.audioPlayer.volume = 0.5;
-    
-                // Restore last saved playback position
+                
+                // Restore playback position if available
                 let savedTime = sessionStorage.getItem("musicTime") || 0;
                 window.audioPlayer.currentTime = parseFloat(savedTime);
-    
+                
                 window.audioPlayer.play().catch(() => {
                     console.log("Autoplay blocked, waiting for user interaction.");
                 });
-    
-                // Continuously save the playback position
+                
+                // Continuously save playback position
                 setInterval(() => {
                     sessionStorage.setItem("musicTime", window.audioPlayer.currentTime);
                 }, 1000);
             }
     
-            // Ensure music starts if user interacts with the page
+            // Start music on first interaction (iPhone fix)
             document.body.addEventListener("click", function () {
                 if (window.audioPlayer.paused) {
                     window.audioPlayer.play();
                 }
             });
         });
-    </script>       
+    </script>
+    
 </body>
 </html>
