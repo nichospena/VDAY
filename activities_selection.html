@@ -58,41 +58,6 @@
     </style>
 </head>
 <body>
-    <audio id="background-music" loop>
-        <source src="music.mp3" type="audio/mpeg">
-    </audio>
-    
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let audio = document.getElementById("background-music");
-    
-            // Check if an audio instance already exists
-            if (!window.audioPlayer) {
-                window.audioPlayer = audio;
-                let savedTime = sessionStorage.getItem("musicTime") || 0;
-                audio.currentTime = parseFloat(savedTime);
-                audio.volume = 0.5;
-    
-                function playMusic() {
-                    if (audio.paused) {
-                        audio.play().catch(err => console.log("Autoplay blocked, waiting for user interaction."));
-                    }
-                }
-    
-                // Start music on first user interaction (fixes iPhone autoplay block)
-                document.body.addEventListener("click", playMusic);
-    
-                // Save the timestamp every second
-                setInterval(() => {
-                    sessionStorage.setItem("musicTime", audio.currentTime);
-                }, 1000);
-            } else {
-                // If music is already playing, replace the current audio element
-                audio.remove();
-                audio = window.audioPlayer;
-            }
-        });
-    </script>    
     <div class="container">
         <h1>Pick an Activity 🎨</h1>
         <p>Select what you’d like to do:</p> 
@@ -153,6 +118,37 @@
             document.getElementById('hidden-dessert').value = params.get('dessert') || 'Not provided';
         </script>
     
-    </div>   
+    </div>  
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Check if audio is already playing
+            if (!window.audioPlayer) {
+                window.audioPlayer = new Audio("music.mp3"); // Replace with your actual file
+                window.audioPlayer.loop = true;
+                window.audioPlayer.volume = 0.5;
+    
+                // Restore last saved playback position
+                let savedTime = sessionStorage.getItem("musicTime") || 0;
+                window.audioPlayer.currentTime = parseFloat(savedTime);
+    
+                window.audioPlayer.play().catch(() => {
+                    console.log("Autoplay blocked, waiting for user interaction.");
+                });
+    
+                // Continuously save the playback position
+                setInterval(() => {
+                    sessionStorage.setItem("musicTime", window.audioPlayer.currentTime);
+                }, 1000);
+            }
+    
+            // Ensure music starts if user interacts with the page
+            document.body.addEventListener("click", function () {
+                if (window.audioPlayer.paused) {
+                    window.audioPlayer.play();
+                }
+            });
+        });
+    </script>
+     
 </body>
 </html>
