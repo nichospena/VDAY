@@ -84,6 +84,7 @@
     </style>
 </head>
 <body>
+    <iframe src="music.html" style="display: none;" allow="autoplay"></iframe>
     <div class="question">Will you be my Valentine?</div>
     <div class="goose-container">
         <div class="goose">
@@ -103,6 +104,14 @@
             setTimeout(() => heart.remove(), 3000);
         }
         setInterval(createFloatingHeart, 1000);
+    </script>
+       <script>
+        document.body.addEventListener("click", function () {
+            let audio = document.getElementById("background-music");
+            if (audio && audio.paused) {
+                audio.play();
+            }
+        });
     </script>
 </body>
 </html>
