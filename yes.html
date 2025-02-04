@@ -3,21 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You!</title>
+    <title>Hooray! 🦢💕</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #fff;
+            text-align: center;
+        }
+        .container {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .happy-goose img {
+            width: 250px;
+        }
+        .cta-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff69b4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #ff69b4;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Thank You! 💖</h1>
-        <p>You made the kitten (and me) very happy! 🐾</p>
-        <div class="image-box">
-            <img src="images/happy_kitten.jpg" alt="Happy kitten" class="kitten-image">
+        <h1>Hooray! 🦢💕</h1>
+        <p>You made the silly goose (and me) very happy!</p>
+        <div class="happy-goose">
+            <img src="images/happy_goose.png" alt="Happy Goose">
         </div>
-        <div class="footer-message">
-            <h2>Don't go yet!</h2>
-            <p>Click the button below to pick a date!</p>
-            <a href="date_picker.html" class="cta-button">Click Me</a>
-        </div>
+        <p><strong>Don't go yet!</strong><br>Click below to plan our date!</p>
+        <a href="date_picker.html" class="cta-button">Click Me</a>
     </div>
 </body>
 </html>

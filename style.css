@@ -35,12 +35,13 @@ h1 {
     text-decoration: none;
     color: #fff;
     background-color: #ff69b4;
+   border: none;
     border-radius: 5px;
     transition: all 0.3s ease;
 }
 
 .button-container a:hover, .cta-button:hover {
-    background-color: #ff85c9;
+    background-color:#ff69b4;
 }
 .date-picker {
     margin: 20px 0;
