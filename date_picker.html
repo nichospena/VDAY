@@ -16,32 +16,43 @@
         </form>
     </div>
     <script>
-        // Check if the audio player already exists to prevent restarting
-        if (!window.audioPlayer) {
-            window.audioPlayer = new Audio("music.mp3"); // Replace with your actual file
-            window.audioPlayer.loop = true;
-            window.audioPlayer.volume = 0.5;
+        document.addEventListener("DOMContentLoaded", function () {
+            let audio;
     
-            // Restore last saved playback position
-            let savedTime = localStorage.getItem("musicTime") || 0;
-            window.audioPlayer.currentTime = parseFloat(savedTime);
-    
-            window.audioPlayer.play().catch(() => {
-                console.log("Autoplay blocked, waiting for user interaction.");
-            });
-    
-            // Continuously save the current playback position
-            setInterval(() => {
-                localStorage.setItem("musicTime", window.audioPlayer.currentTime);
-            }, 1000);
-        }
-    
-        // Ensure music starts if user interacts with the page
-        document.addEventListener("click", function () {
-            if (window.audioPlayer.paused) {
-                window.audioPlayer.play();
+            // Check if an existing audio player already exists
+            if (window.parent.audioPlayer) {
+                audio = window.parent.audioPlayer;
+            } else {
+                // Create a new audio player only once
+                audio = new Audio("music.mp3"); // Replace with your actual file
+                audio.loop = true;
+                audio.volume = 0.5;
+                window.parent.audioPlayer = audio;
             }
+    
+            // Restore playback position
+            let savedTime = sessionStorage.getItem("musicTime") || 0;
+            audio.currentTime = parseFloat(savedTime);
+    
+            // Play music after the first interaction (for iPhones)
+            function playMusic() {
+                if (audio.paused) {
+                    audio.play().then(() => {
+                        sessionStorage.setItem("musicTime", audio.currentTime);
+                    }).catch(() => {
+                        console.log("Autoplay blocked, waiting for user interaction.");
+                    });
+                }
+            }
+    
+            // Detect user interaction to start music (fix for iPhones)
+            document.body.addEventListener("click", playMusic);
+    
+            // Save playback position every second
+            setInterval(() => {
+                sessionStorage.setItem("musicTime", audio.currentTime);
+            }, 1000);
         });
-    </script>    
+    </script>      
 </body>
 </html>
