@@ -5,17 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Will You Be My Valentine?</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #fff;
+            overflow: hidden;
+            text-align: center;
+        }
+        .question {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff69b4;
+            margin-bottom: 20px;
+        }
+        .goose-container {
+            position: relative;
+        }
+        .goose img {
+            width: 250px;
+            animation: flap 0.6s infinite alternate ease-in-out;
+        }
+        .heart-sign {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            background: #ff69b4;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            animation: bounce 1s infinite ease-in-out;
+        }
+        .floating-hearts {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 15px;
+            height: 15px;
+            background: red;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: floatUp 3s infinite ease-in;
+        }
+        @keyframes flap {
+            0% { transform: rotate(-2deg); }
+            100% { transform: rotate(2deg); }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -55%) scale(1.1); }
+        }
+        @keyframes floatUp {
+            0% { transform: translate(-50%, 0) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, -100px) scale(0.8); opacity: 0; }
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .yes-button, .no-button {
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: white;
+            background-color: #ff69b4;
+            margin: 10px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+        .yes-button:hover, .no-button:hover {
+            background-color: #ff69b4;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Will you be my valentine?</h1>
-        <div class="image-box">
-            <img src="images/kitten.jpg" alt="Cute kitten" class="kitten-image">
-        </div>
-        <div class="button-container">
-            <a href="yes.html" class="yes-button">Yes</a>
-            <a href="no.html" class="no-button">No</a>
+    <div class="question">Will you be my Valentine?</div>
+    <div class="goose-container">
+        <div class="goose">
+            <img src="images/silly_goose_transparent.png" alt="Silly Goose">
         </div>
     </div>
+    <div class="button-container">
+        <a href="yes.html" class="yes-button">Yes</a>
+        <a href="no.html" class="no-button">No</a>
+    </div>
+    <script>
+        function createFloatingHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("floating-hearts");
+            document.body.appendChild(heart);
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            setTimeout(() => heart.remove(), 3000);
+        }
+        setInterval(createFloatingHeart, 1000);
+    </script>
 </body>
 </html>

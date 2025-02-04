@@ -53,7 +53,7 @@
         }
 
         .cta-button:hover {
-            background-color: #ff85c9;
+            background-color: #ff69b4;
         }
     </style>
 </head>
@@ -62,8 +62,9 @@
         <h1>Pick a Dessert 🍨</h1>
         <p>Select your favorite dessert:</p>
         <form action="activities_selection.html" method="GET">
-            <input type="hidden" name="date" value="{{ date }}">
-            <input type="hidden" name="food" value="{{ food }}">
+            <input type="hidden" name="date" id="hidden-date">
+            <input type="hidden" name="food" id="hidden-food">
+        
             <div class="dessert-options">
                 <!-- Original Options -->
                 <div class="dessert-item">
@@ -80,8 +81,8 @@
                 </div>
                 <div class="dessert-item">
                     <label>
-                        <img src="images/mint_chip.jpg" alt="Mint n Chip">
-                        <input type="checkbox" name="dessert" value="Mint n Chip"> Mint n Chip
+                        <img src="images/Spumoni.png" alt="Spumoni">
+                        <input type="checkbox" name="dessert" value="Spumoni"> Spumoni
                     </label>
                 </div>
                 <div class="dessert-item">
@@ -122,8 +123,21 @@
                     </label>
                 </div>
             </div>
+
+    
+        
+            
             <button type="submit" class="cta-button">Next</button>
         </form>
+        
+        <script>
+            const params = new URLSearchParams(window.location.search);
+            document.getElementById('hidden-date').value = params.get('date') || 'Not provided';
+            document.getElementById('hidden-food').value = params.get('food') || 'Not provided';
+        </script>
+        
+    
+    
     </div>
 </body>
 </html>

@@ -62,9 +62,9 @@
         <h1>Pick an Activity 🎨</h1>
         <p>Select what you’d like to do:</p>
         <form action="thank_you.html" method="GET">
-            <input type="hidden" name="date" value="{{ date }}">
-            <input type="hidden" name="food" value="{{ food }}">
-            <input type="hidden" name="dessert" value="{{ dessert }}">
+            <input type="hidden" name="date" id="hidden-date">
+            <input type="hidden" name="food" id="hidden-food">
+            <input type="hidden" name="dessert" id="hidden-dessert">>
             <div class="activity-options">
                 <!-- Build Legos -->
                 <div class="activity-item">
@@ -111,6 +111,13 @@
             </div>
             <button type="submit" class="cta-button">Submit</button>
         </form>
+        <script>
+            const params = new URLSearchParams(window.location.search);
+            document.getElementById('hidden-date').value = params.get('date') || 'Not provided';
+            document.getElementById('hidden-food').value = params.get('food') || 'Not provided';
+            document.getElementById('hidden-dessert').value = params.get('dessert') || 'Not provided';
+        </script>
+    
     </div>
 </body>
 </html>

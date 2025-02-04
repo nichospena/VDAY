@@ -3,16 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>No?</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Oh no! 😢</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #fff;
+            text-align: center;
+        }
+        .container {
+            background: #ffe4e1;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .sad-goose img {
+            width: 250px;
+        }
+        .cta-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff69b4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #ff69b4;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>Oh no! 😢</h1>
-        <p>You broke the kitten's heart! Are you sure?</p>
-        <div class="image-box">
-            <img src="images/sad_kitten.jpg" alt="Sad kitten" class="kitten-image">
+        <p>You made the silly goose sad... Are you sure?</p>
+        <div class="sad-goose">
+            <img src="images/sad_goose.png" alt="Sad Goose">
         </div>
+        <p><strong>Give it another try?</strong></p>
         <a href="index.html" class="cta-button">Go Back</a>
     </div>
 </body>
