@@ -84,7 +84,6 @@
     </style>
 </head>
 <body>
-    <iframe src="music.html" style="display: none;" allow="autoplay"></iframe>
     <div class="question">Will you be my Valentine?</div>
     <div class="goose-container">
         <div class="goose">
@@ -105,13 +104,34 @@
         }
         setInterval(createFloatingHeart, 1000);
     </script>
-       <script>
-        document.body.addEventListener("click", function () {
-            let audio = document.getElementById("background-music");
-            if (audio && audio.paused) {
-                audio.play();
+    <script>
+        // Global audio player
+        if (!window.audioPlayer) {
+            window.audioPlayer = new Audio("music.mp3");
+            window.audioPlayer.loop = true;
+            window.audioPlayer.volume = 0.5;
+    
+            // Restore last position
+            let savedTime = localStorage.getItem("musicTime") || 0;
+            window.audioPlayer.currentTime = parseFloat(savedTime);
+    
+            window.audioPlayer.play().catch(() => {
+                console.log("Autoplay blocked, waiting for user interaction.");
+            });
+    
+            // Continuously save playback time
+            setInterval(() => {
+                localStorage.setItem("musicTime", window.audioPlayer.currentTime);
+            }, 1000);
+        }
+    
+        // Ensure music starts after user interaction
+        document.addEventListener("click", function () {
+            if (window.audioPlayer.paused) {
+                window.audioPlayer.play();
             }
         });
     </script>
+    
 </body>
 </html>

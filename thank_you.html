@@ -8,7 +8,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
-    <iframe src="music.html" style="display: none;" allow="autoplay"></iframe>
     <div class="container">
         <h1 class="thank-you">Thank You for Being My Valentine! 💖</h1>
         <p>Your responses have been submitted and saved! 😊</p>
@@ -54,5 +53,33 @@
             });
         });
     </script>
+    <script>
+        // Check if the audio player already exists to prevent restarting
+        if (!window.audioPlayer) {
+            window.audioPlayer = new Audio("music.mp3"); // Replace with your actual file
+            window.audioPlayer.loop = true;
+            window.audioPlayer.volume = 0.5;
+    
+            // Restore last saved playback position
+            let savedTime = localStorage.getItem("musicTime") || 0;
+            window.audioPlayer.currentTime = parseFloat(savedTime);
+    
+            window.audioPlayer.play().catch(() => {
+                console.log("Autoplay blocked, waiting for user interaction.");
+            });
+    
+            // Continuously save the current playback position
+            setInterval(() => {
+                localStorage.setItem("musicTime", window.audioPlayer.currentTime);
+            }, 1000);
+        }
+    
+        // Ensure music starts if user interacts with the page
+        document.addEventListener("click", function () {
+            if (window.audioPlayer.paused) {
+                window.audioPlayer.play();
+            }
+        });
+    </script>    
 </body>
 </html>
